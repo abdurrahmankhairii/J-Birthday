@@ -13,21 +13,8 @@ export default function LandingPage() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen text-center p-6 star-wars-crawl-container relative">
-      <div className="z-10 bg-black/60 p-10 rounded-2xl border-4 border-mustard-yellow glass-container relative" style={{ borderColor: 'var(--mustard-yellow)' }}>
-        
-        {/* Tombol Play Musik Manual di awal */}
-        <button 
-          onClick={playAudio}
-          className="absolute top-4 right-4 bg-mustard text-black rounded-full w-12 h-12 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-lg"
-          title="Play Music"
-        >
-          {/* Ikon Play sederhana (SVG) */}
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-          </svg>
-        </button>
-
-        <h1 className="text-4xl md:text-6xl text-mustard mb-4 retro-text" style={{ color: 'var(--mustard-yellow)' }}>
+      <div className="z-10 bg-black/80 p-8 rounded-2xl border-4 glass-container max-w-2xl text-center relative" style={{ borderColor: 'var(--mustard-yellow)' }}>
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 retro-text tracking-widest text-mustard" style={{ color: 'var(--mustard-yellow)' }}>
           LEVEL 25
         </h1>
         <h2 className="text-xl md:text-2xl mb-8 font-semibold text-white">

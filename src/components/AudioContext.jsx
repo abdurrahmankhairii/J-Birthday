@@ -7,6 +7,21 @@ export function AudioProvider({ children }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
+  const toggleAudio = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.play().then(() => {
+          setIsPlaying(true);
+        }).catch(err => {
+          console.warn("Audio play blocked:", err);
+        });
+      }
+    }
+  };
+
   const playAudio = () => {
     if (audioRef.current && !isPlaying) {
       audioRef.current.play().then(() => {
@@ -18,7 +33,7 @@ export function AudioProvider({ children }) {
   };
 
   return (
-    <AudioContext.Provider value={{ isPlaying, playAudio }}>
+    <AudioContext.Provider value={{ isPlaying, toggleAudio, playAudio }}>
       {children}
       <audio ref={audioRef} loop>
         <source src="/audio/Niki.mp3" type="audio/mpeg" />
