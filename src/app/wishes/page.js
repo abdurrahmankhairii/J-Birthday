@@ -28,7 +28,7 @@ export default function WishesPage() {
       {/* HEADER WISHES */}
       <div className="w-full max-w-3xl text-center mt-10 mb-16 glass-container border-2 border-mustard-yellow" style={{ borderColor: 'var(--mustard-yellow)' }}>
         <h1 className="text-3xl md:text-5xl text-mustard mb-6 retro-text" style={{ color: 'var(--mustard-yellow)' }}>
-          LEVEL 26 UNLOCKED!
+          LEVEL 25 UNLOCKED!
         </h1>
         
         {mainMedia && (

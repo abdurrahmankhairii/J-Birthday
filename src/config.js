@@ -1,6 +1,6 @@
 export const birthdayConfig = {
   // Ucapan Akhir yang akan tampil di halaman /wishes
-  wishesText: "Happy level up ke 26 sayang! May the Force be with you, selalu. Semoga tahun ini penuh dengan petualangan seru kayak Finn & Jake. I love you to the moon and back!",
+  wishesText: "Happy level up ke 25 sayang! May the Force be with you, selalu. Semoga tahun ini penuh dengan petualangan seru kayak Finn & Jake. I love you to the moon and back!",
 
   // Pop up kado clue
   giftClue: "Coba cek di bawah meja kerjamu, ada sesuatu yang nungguin dari tadi!",
@@ -30,9 +30,15 @@ export const birthdayConfig = {
     correctAnswer: "Jam", // Jawaban dibuat tidak case-sensitive di dalam kodenya nanti
   },
 
-  // Stage 3: Puzzle Password
+  // Stage 4: Puzzle Password
   puzzlePassword: {
     clue: "Masukkan kombinasi angka ulang tahunmu (DDMMYYYY)", // Contoh: 14061998
-    correctAnswer: "03061998", // GANTI dengan tanggal ulang tahun Jordan yang benar (format bebas asal sama dengan di sini)
+    correctAnswer: "04062001", // Tanggal lahir Jordan: 4 Juni 2001
+  },
+
+  // Konfigurasi tambahan untuk puzzle gambar
+  imagePuzzle: {
+    gridSize: 5, // 5x5 grid (25 keping) agar lebih rumit
+    imageName: "Main", // Gambar utama yang akan digunakan untuk puzzle (dari folder media)
   }
 };

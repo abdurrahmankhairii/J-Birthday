@@ -44,7 +44,7 @@ export default function PuzzlePage() {
     <main className="flex flex-col items-center justify-center min-h-screen p-6">
       <div className="z-10 bg-black/80 p-10 rounded-2xl border-4 glass-container w-full max-w-lg" style={{ borderColor: 'var(--star-wars-red)' }}>
         <h1 className="text-2xl text-center mb-8 retro-text" style={{ color: 'var(--star-wars-red)' }}>
-          STAGE 3: FINAL PUZZLE
+          STAGE 4: FINAL PUZZLE
         </h1>
         
         <p className="text-xl mb-8 text-white text-center">

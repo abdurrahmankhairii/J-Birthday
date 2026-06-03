@@ -11,7 +11,7 @@ export default function RiddlePage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (answer.toLowerCase().trim() === birthdayConfig.riddle.correctAnswer.toLowerCase().trim()) {
-      router.push('/puzzle');
+      router.push('/jigsaw');
     } else {
       setErrorMsg('Tebakanmu masih salah! Coba pikir lagi.');
     }
