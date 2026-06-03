@@ -3,7 +3,7 @@ export const birthdayConfig = {
   wishesText: "Happy level up ke 25 sayang! May the Force be with you, selalu. Semoga tahun ini penuh dengan petualangan seru kayak Finn & Jake. I love you to the moon and back!",
 
   // Pop up kado clue
-  giftClue: "Coba cek di bawah meja kerjamu, ada sesuatu yang nungguin dari tadi!",
+  giftClue: "Maaf ya sayang aku ngeprank kamu dan buat kamu sedih. Sekarang buka kotaknya. Love u",
 
   // Stage 1: Quiz (Bisa ditambah/dikurangi sesuai kebutuhan)
   quizQuestions: [
