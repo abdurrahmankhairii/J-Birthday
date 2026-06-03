@@ -1,5 +1,5 @@
 'use client';
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState, useEffect } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 
 // Komponen Halaman Sampul (Buku Depan/Belakang)
@@ -70,10 +70,16 @@ const BookPage = forwardRef((props, ref) => {
 BookPage.displayName = 'BookPage';
 
 export default function Flipbook({ mediaFiles }) {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   // Filter media files that start with 'love'
   const loveFiles = mediaFiles.filter(f => f.toLowerCase().startsWith('love')).sort();
 
-  if (loveFiles.length === 0) {
+  if (!isMounted || loveFiles.length === 0) {
     return null;
   }
 
