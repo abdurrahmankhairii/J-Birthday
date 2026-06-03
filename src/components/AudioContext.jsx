@@ -36,7 +36,7 @@ export function AudioProvider({ children }) {
     <AudioContext.Provider value={{ isPlaying, toggleAudio, playAudio }}>
       {children}
       <audio ref={audioRef} loop>
-        <source src="/audio/Niki.mp3" type="audio/mpeg" />
+        <source src="/media/Niki.mp3" type="audio/mpeg" />
       </audio>
     </AudioContext.Provider>
   );

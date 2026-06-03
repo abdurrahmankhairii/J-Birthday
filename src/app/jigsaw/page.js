@@ -18,8 +18,9 @@ export default function JigsawPage() {
     fetch('/api/media')
       .then(res => res.json())
       .then(data => {
+        if (!data.files) return;
         const imageName = birthdayConfig.imagePuzzle.imageName.toLowerCase();
-        const file = data.find(f => f.toLowerCase().startsWith(imageName));
+        const file = data.files.find(f => f.toLowerCase().startsWith(imageName));
         if (file) {
           setPuzzleImageFile(file);
         } else {
