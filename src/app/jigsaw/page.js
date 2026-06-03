@@ -11,6 +11,24 @@ export default function JigsawPage() {
   const [pieces, setPieces] = useState([]);
   const [selectedIdx, setSelectedIdx] = useState(null);
   const [isSolved, setIsSolved] = useState(false);
+  const [puzzleImageFile, setPuzzleImageFile] = useState(null);
+
+  // Fetch puzzle image name from API
+  useEffect(() => {
+    fetch('/api/media')
+      .then(res => res.json())
+      .then(data => {
+        const imageName = birthdayConfig.imagePuzzle.imageName.toLowerCase();
+        const file = data.find(f => f.toLowerCase().startsWith(imageName));
+        if (file) {
+          setPuzzleImageFile(file);
+        } else {
+          // Fallback if not found
+          setPuzzleImageFile(`${birthdayConfig.imagePuzzle.imageName}.jpg`);
+        }
+      })
+      .catch(err => console.error("Error fetching media:", err));
+  }, []);
 
   // Initialize and shuffle
   useEffect(() => {
@@ -90,10 +108,10 @@ export default function JigsawPage() {
                 onClick={() => handlePieceClick(idx)}
                 className={`cursor-pointer transition-transform duration-200 ${isSelected ? 'scale-90 border-2 border-red-500 z-10 relative' : ''}`}
                 style={{
-                  backgroundImage: `url(/media/${birthdayConfig.imagePuzzle.imageName}.jpg)`,
+                  backgroundImage: puzzleImageFile ? `url(/media/${puzzleImageFile})` : 'none',
                   backgroundSize: `${gridSize * 100}% ${gridSize * 100}%`,
                   backgroundPosition: `${bgPosX}% ${bgPosY}%`,
-                  backgroundColor: '#333', // Fallback if image not loaded
+                  backgroundColor: '#444', // Fallback if image not loaded
                   width: '100%',
                   height: '100%'
                 }}
