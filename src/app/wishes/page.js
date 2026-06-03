@@ -19,9 +19,21 @@ export default function WishesPage() {
       .catch(err => console.error("Error fetching media:", err));
   }, []);
 
-  // Pisahkan file utama jika ada (misal Main.jpg) dan file lainnya (Jordan1 - Jordan20)
-  const mainMedia = mediaFiles.find(f => f.toLowerCase().startsWith('main'));
-  const galleryMedia = mediaFiles.filter(f => f.toLowerCase().startsWith('jordan')).sort();
+  // Deteksi foto utama (bernama persis 'Jordan' atau 'Main')
+  const mainMedia = mediaFiles.find(f => {
+    const name = f.split('.')[0].toLowerCase();
+    return name === 'jordan' || name === 'main';
+  });
+
+  // Gallery: foto bernama 'Jordan1' s.d 'Jordan20'
+  const galleryMedia = mediaFiles.filter(f => {
+    const name = f.split('.')[0].toLowerCase();
+    return name.startsWith('jordan') && name !== 'jordan';
+  }).sort((a, b) => {
+    const numA = parseInt(a.replace(/\D/g, '')) || 0;
+    const numB = parseInt(b.replace(/\D/g, '')) || 0;
+    return numA - numB;
+  });
 
   return (
     <main className="min-h-screen p-6 flex flex-col items-center">
@@ -59,24 +71,36 @@ export default function WishesPage() {
             return (
               <div 
                 key={idx} 
-                className="relative group rounded-xl overflow-hidden border-2 transition-transform duration-300 hover:scale-105 hover:z-10"
-                style={{ borderColor: 'var(--dark-bg)', aspectRatio: '1/1' }}
+                className="relative group overflow-hidden transition-all duration-500 hover:scale-105 hover:z-10 cursor-pointer"
+                style={{ 
+                  aspectRatio: '1/1',
+                  border: '4px solid var(--mustard-yellow)',
+                  borderRadius: '16px',
+                  boxShadow: '0 10px 25px rgba(0,0,0,0.8), 0 0 15px rgba(230,179,30,0.4)',
+                  padding: '5px',
+                  background: 'linear-gradient(135deg, #2a2a2a, #000)'
+                }}
               >
-                {isVideo ? (
-                  <video 
-                    src={`/media/${file}`} 
-                    className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
-                    autoPlay loop muted playsInline
-                  />
-                ) : (
-                  <img 
-                    src={`/media/${file}`} 
-                    alt={`Memory ${idx}`} 
-                    className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
-                  />
-                )}
-                {/* Overlay vintage retro style */}
-                <div className="absolute inset-0 bg-yellow-600 mix-blend-overlay opacity-20 group-hover:opacity-0 transition-opacity duration-300"></div>
+                <div className="w-full h-full relative rounded-lg overflow-hidden border border-gray-700">
+                  {isVideo ? (
+                    <video 
+                      src={`/media/${file}`} 
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                      autoPlay loop muted playsInline
+                    />
+                  ) : (
+                    <img 
+                      src={`/media/${file}`} 
+                      alt={`Memory ${idx}`} 
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                    />
+                  )}
+                  {/* Overlay gradien elegan yang menghilang saat di-hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-0 transition-opacity duration-500"></div>
+                  {/* Efek kilauan emas di sudut */}
+                  <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-yellow-300 opacity-50 m-2"></div>
+                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-yellow-300 opacity-50 m-2"></div>
+                </div>
               </div>
             );
           }) : (

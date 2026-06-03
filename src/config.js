@@ -9,8 +9,8 @@ export const birthdayConfig = {
   quizQuestions: [
     {
       question: "Siapa karakter Star Wars favoritku?",
-      options: ["Luke Skywalker", "Darth Vader", "Han Solo", "Yoda"],
-      correctAnswer: 1, // Index dari options (0 = Luke, 1 = Darth Vader, dst)
+      options: ["Luke Skywalker", "Darth Vader", "Darth Sidious", "Yoda"],
+      correctAnswer: 2, // Index dari options (0 = Luke, 1 = Darth Vader, 2 = Darth Sidious, 3 = Yoda)
     },
     {
       question: "Apa warna lightsaber Mace Windu?",
@@ -39,6 +39,6 @@ export const birthdayConfig = {
   // Konfigurasi tambahan untuk puzzle gambar
   imagePuzzle: {
     gridSize: 5, // 5x5 grid (25 keping) agar lebih rumit
-    imageName: "Main", // Gambar utama yang akan digunakan untuk puzzle (dari folder media)
+    imageName: "Puzzle", // Gambar utama yang akan digunakan untuk puzzle (dari folder media), wajib bernama Puzzle.jpg atau Puzzle.png
   }
 };

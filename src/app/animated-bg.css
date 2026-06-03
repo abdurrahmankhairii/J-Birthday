@@ -32,36 +32,66 @@
   z-index: -1;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+  /* Tambah filter drop-shadow agar lebih menonjol */
+  filter: drop-shadow(0 0 10px rgba(230, 179, 30, 0.4));
 }
 
 .ship-1 {
-  top: 20%;
-  left: -150px;
-  width: 100px;
+  top: 15%;
+  left: -250px;
+  width: 180px; /* Diperbesar dari 100px */
   animation-name: fly-right;
-  animation-duration: 25s;
+  animation-duration: 30s;
 }
 
 .ship-2 {
-  top: 60%;
-  right: -150px;
-  width: 80px;
+  top: 55%;
+  right: -250px;
+  width: 150px; /* Diperbesar dari 80px */
   animation-name: fly-left;
-  animation-duration: 35s;
-  animation-delay: 10s;
+  animation-duration: 40s;
+  animation-delay: 15s;
 }
 
 .ship-3 {
-  bottom: 10%;
-  left: -150px;
-  width: 120px;
+  bottom: 15%;
+  left: -250px;
+  width: 220px; /* Diperbesar dari 120px */
   animation-name: fly-right;
-  animation-duration: 40s;
+  animation-duration: 45s;
   animation-delay: 5s;
 }
 
+/* Tambahan Pesawat/Karakter Baru untuk Mengisi Kekosongan */
+.ship-4 {
+  top: 35%;
+  right: -250px;
+  width: 160px;
+  animation-name: fly-left-wavy;
+  animation-duration: 35s;
+  animation-delay: 2s;
+}
+
+.ship-5 {
+  bottom: 30%;
+  left: -250px;
+  width: 140px;
+  animation-name: fly-diagonal-up;
+  animation-duration: 50s;
+  animation-delay: 12s;
+}
+
+.ship-6 {
+  top: 5%;
+  left: -250px;
+  width: 130px;
+  animation-name: fly-diagonal-down;
+  animation-duration: 42s;
+  animation-delay: 22s;
+}
+
 @keyframes fly-right {
-  0% { transform: translateX(-200px) translateY(0px) rotate(15deg); }
+  0% { transform: translateX(-250px) translateY(0px) rotate(15deg); }
   25% { transform: translateX(30vw) translateY(-50px) rotate(5deg); }
   50% { transform: translateX(60vw) translateY(20px) rotate(10deg); }
   75% { transform: translateX(90vw) translateY(-30px) rotate(15deg); }
@@ -73,7 +103,58 @@
   25% { transform: translateX(90vw) translateY(50px) scaleX(-1) rotate(-5deg); }
   50% { transform: translateX(60vw) translateY(-20px) scaleX(-1) rotate(-15deg); }
   75% { transform: translateX(30vw) translateY(30px) scaleX(-1) rotate(-5deg); }
-  100% { transform: translateX(-200px) translateY(0px) scaleX(-1) rotate(-10deg); }
+  100% { transform: translateX(-250px) translateY(0px) scaleX(-1) rotate(-10deg); }
+}
+
+@keyframes fly-left-wavy {
+  0% { transform: translateX(120vw) translateY(0px) scaleX(-1) rotate(-5deg); }
+  20% { transform: translateX(100vw) translateY(-60px) scaleX(-1) rotate(5deg); }
+  40% { transform: translateX(80vw) translateY(40px) scaleX(-1) rotate(-10deg); }
+  60% { transform: translateX(50vw) translateY(-40px) scaleX(-1) rotate(5deg); }
+  80% { transform: translateX(20vw) translateY(60px) scaleX(-1) rotate(-5deg); }
+  100% { transform: translateX(-250px) translateY(0px) scaleX(-1) rotate(0deg); }
+}
+
+@keyframes fly-diagonal-up {
+  0% { transform: translateX(-250px) translateY(30vh) rotate(25deg); }
+  100% { transform: translateX(120vw) translateY(-50vh) rotate(15deg); }
+}
+
+@keyframes fly-diagonal-down {
+  0% { transform: translateX(-250px) translateY(-10vh) rotate(-15deg); }
+  100% { transform: translateX(120vw) translateY(60vh) rotate(-5deg); }
+}
+
+/* Shooting Stars untuk efek ramai tanpa gambar ekstra */
+.shooting-star {
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,1));
+  animation: shoot 4s infinite linear;
+  opacity: 0;
+  z-index: -2;
+}
+
+.ss-1 { top: 15%; left: 80%; animation-delay: 0s; }
+.ss-2 { top: 45%; left: 30%; animation-delay: 2.5s; }
+.ss-3 { top: 75%; left: 70%; animation-delay: 1.2s; }
+.ss-4 { top: 25%; left: 10%; animation-delay: 3.7s; }
+
+@keyframes shoot {
+  0% {
+    transform: translateX(0) translateY(0) rotate(-45deg);
+    opacity: 1;
+    width: 0;
+  }
+  30% {
+    width: 100px;
+  }
+  100% {
+    transform: translateX(-500px) translateY(500px) rotate(-45deg);
+    opacity: 0;
+    width: 0;
+  }
 }
 
 .moon {
