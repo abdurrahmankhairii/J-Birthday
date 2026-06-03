@@ -132,6 +132,35 @@ export default function Flipbook({ mediaFiles }) {
     );
   };
 
+  // Construct children array to avoid boolean/null children which crash react-pageflip
+  const bookChildren = [
+    <BookCover key="cover-front">
+      <h1 className="retro-text text-yellow-500 text-3xl">OUR<br/><br/>MEMORIES</h1>
+    </BookCover>
+  ];
+
+  loveFiles.forEach((file, index) => {
+    bookChildren.push(
+      <BookPage key={`page-${index}`}>
+        {renderPageContent(file, index)}
+      </BookPage>
+    );
+  });
+
+  if (loveFiles.length % 2 !== 0) {
+    bookChildren.push(
+      <BookPage key="page-empty">
+        <div className="opacity-50 retro-text text-xs text-gray-500">The End...</div>
+      </BookPage>
+    );
+  }
+
+  bookChildren.push(
+    <BookCover key="cover-back">
+      <h1 className="retro-text text-yellow-600 text-xl">Made With Love</h1>
+    </BookCover>
+  );
+
   return (
     <div className="w-full flex flex-col items-center mt-20 mb-20 relative z-10">
       <h2 className="text-center text-3xl mb-8 retro-text drop-shadow-[0_0_10px_rgba(230,179,30,0.8)]" style={{ color: 'var(--mustard-yellow)' }}>
@@ -153,29 +182,7 @@ export default function Flipbook({ mediaFiles }) {
           mobileScrollSupport={true}
           className="shadow-2xl"
         >
-          {/* Cover Depan */}
-          <BookCover>
-            <h1 className="retro-text text-yellow-500 text-3xl">OUR<br/><br/>MEMORIES</h1>
-          </BookCover>
-
-          {/* Halaman Dalam */}
-          {loveFiles.map((file, index) => (
-            <BookPage key={index}>
-              {renderPageContent(file, index)}
-            </BookPage>
-          ))}
-
-          {/* Jika jumlah halaman dalam ganjil, tambahkan 1 halaman kosong agar cover belakang jatuh di sisi kanan */}
-          {loveFiles.length % 2 !== 0 && (
-            <BookPage>
-              <div className="opacity-50 retro-text text-xs text-gray-500">The End...</div>
-            </BookPage>
-          )}
-
-          {/* Cover Belakang */}
-          <BookCover>
-            <h1 className="retro-text text-yellow-600 text-xl">Made With Love</h1>
-          </BookCover>
+          {bookChildren}
         </HTMLFlipBook>
       </div>
       
@@ -190,28 +197,7 @@ export default function Flipbook({ mediaFiles }) {
           mobileScrollSupport={true}
           className="shadow-2xl"
         >
-          {/* Cover Depan */}
-          <BookCover>
-            <h1 className="retro-text text-yellow-500 text-2xl">OUR<br/><br/>MEMORIES</h1>
-          </BookCover>
-
-          {/* Halaman Dalam */}
-          {loveFiles.map((file, index) => (
-            <BookPage key={index}>
-              {renderPageContent(file, index)}
-            </BookPage>
-          ))}
-
-          {loveFiles.length % 2 !== 0 && (
-            <BookPage>
-              <div className="opacity-50 retro-text text-xs text-gray-500">The End...</div>
-            </BookPage>
-          )}
-
-          {/* Cover Belakang */}
-          <BookCover>
-            <h1 className="retro-text text-yellow-600 text-lg">Made With Love</h1>
-          </BookCover>
+          {bookChildren}
         </HTMLFlipBook>
       </div>
       
