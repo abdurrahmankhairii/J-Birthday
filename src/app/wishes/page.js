@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { birthdayConfig } from '../../config';
 import GiftBox from '../../components/GiftBox';
+import Flipbook from '../../components/Flipbook';
 
 export default function WishesPage() {
   const [mediaFiles, setMediaFiles] = useState([]);
@@ -83,6 +84,9 @@ export default function WishesPage() {
           )}
         </div>
       </div>
+
+      {/* FLIPBOOK LOVE ALBUM */}
+      <Flipbook mediaFiles={mediaFiles} />
 
       {/* GIFT BOX */}
       <GiftBox />
